@@ -124,29 +124,26 @@ Known that $(AB)_{ij} =\sum_{k=1}^{n}A_{ik}B_{kj}$. In the case that $i > j$, we
 \subsection*{Problem 5}
 \textit{See HW instruction.}\newline
 
-Let A be invertible:\\
-Since A is an $n\times n$ matrix and invertible\\
-So Rank A = n since $\lvert A \rvert$ $\neq$ 0, which implies Rank A = n\\
-And we know that if Rank A = n then the column vectors are linearly independent.\\
-Therefore, if A is invertible, then all the columns vectors are linearly independent.\\
-Now go \textbf{conversely}:\\
-Let the columns of A be linearly independent.\\
-We want to show that Rank A = n,\\
-Assume that Rank A = m $<$ n,\\
-then nullity of A = No. of Columns - Rank = n - m.\\
-But nullity is the number of solutions of the system Ax = 0,\\
-And we know that the homogeneous system always has unique solution or infinitely many solutions. They can't have finite solutions.\\
-So n - m is either 0 or 1, i.e. m = n or m = n - 1\\
-if m = n, then result is trivial;\\
-if m = n - 1, then Rank A = n - 1.\\
-So number of non zero row of A = n - 1\\
-There must be a zero row, which means that the system Ax = 0 has a dependent variable of A.\\
-Therefore, A has a dependent column vector, which violets that columns of A are linear independent.\\
-So we now have a contradiction. Hence the assumption is wrong. \\
-$\implies RankA = n$\\
-Therefore, if $\lvert A \rvert$ $\neq$ 0 and the columns of A is linearly independent, then A is invertible.\\
-So A is invertible if and only if all the columns of A are linearly independent. \\
+$A \vec{x} = 0$ implies $\sum\limits_{i}^{n} \sum\limits_{k = 1}^{n} A_{ik} x_{k} = 0$, which can be rearranged to $\sum\limits_{k = 1}^{n} x_k v_k = 0$ for $v_i$ being the $i$-th column of $A$. If all the $v_i$ of $A$ are linearly independent, we must have $A \vec{x} = 0$ only when $\vec{x} = 0$\newline
 
+\textbf{W.T.S.} $A^{-1}$ exists $\Longrightarrow A \vec{x} = 0$  only when $\vec{x} = 0$.
+
+\begin{align*}
+    A \vec{x} &= 0 \\
+    A^{-1} A \vec{x} &= A^{-1} 0 \\
+    I \vec{x} &= 0 \\
+    \vec{x} = 0
+\end{align*}
+
+Thus, the first direction is therefore proven.\newline
+
+\textbf{W.T.S.} $A \vec{x} = 0$ only when $\vec{x} = 0 \ \Longrightarrow A^{-1}$ exists.
+
+Since all columns $x_i$ of $A$ are linearly independent, by definition any $\vec{b}$ within the defined vector space ($\mathbb{R}^n$ or $\mathbb{C}^n$) can be achived by a linear combination of columns of $A$, which implies there must be a solution for $A \vec{x} = \vec{b}$ for all legal $\vec{b}$.
+
+Now we want to show that $AM = I$, since $I \in \mathbb{R}^n$ (or $I \in \mathbb{C}^n$, W.L.O.G.), there must be a solution $M$ for this equality. Thus, $A$ is invertable given all of its columns are linearly independent.\newline
+
+As both directions are proven, the iff-relationship-in-question is therefore proven.
 
 
 \end{document}
