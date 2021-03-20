@@ -1,0 +1,124 @@
+\documentclass[11pt]{article}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilc}{\texttt}
+\usepackage{etoolbox}
+\usepackage{algorithm}
+\usepackage{changepage}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usepackage{pifont}
+\usepackage{gensymb}
+\usetikzlibrary{matrix,positioning,arrows.meta,arrows}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+% \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\providecommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\providecommand{\myfloor}[1]{\left \lfloor #1 \right \rfloor }
+\providecommand{\qbm}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\providecommand{\qpm}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\providecommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\providecommand{\len}[1]{\left| #1 \right|}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\begin{document}
+
+
+
+\title{\textbf{MATH 307: Individual Homework 12}}
+
+
+\author{Shaochen (Henry) ZHONG, \ilc{sxz517@case.edu}}
+
+\date{Due and submitted on 03/22/2021 \\ Spring 2021, Dr. Guo}
+\maketitle
+
+
+
+\subsection*{Problem 1}
+\textit{See HW instruction.}\newline
+
+For $A = \qbm{1 & i \\ 1 & -i}$, we have:
+
+\begin{align*}
+    B = A^{-1} &= \qbm{1 & i \\ 1 & -i}^{-1} = \frac{1}{-2i} \qbm{-i & -i \\ -1 & 1} = \qbm{\frac{1}{2} & \frac{1}{2} \\ -\frac{1}{2}i & \frac{1}{2}i}
+\end{align*}
+
+Now to confirm that $AB = BA = I$:
+
+\begin{align*}
+    AB &= \qbm{1 & i \\ 1 & -i} \cdot \qbm{\frac{1}{2} & \frac{1}{2} \\ -\frac{1}{2}i & \frac{1}{2}i} \\
+    &= \qbm{\frac{1}{2} + \frac{1}{2} & \frac{1}{2} - \frac{1}{2} \\ \frac{1}{2} - \frac{1}{2} & \frac{1}{2} + \frac{1}{2}} = \qbm{1 & 0 \\ 0 & 1} = I \\
+    BA &= \qbm{\frac{1}{2} & \frac{1}{2} \\ -\frac{1}{2}i & \frac{1}{2}i} \cdot \qbm{1 & i \\ 1 & -i} \\
+    &= \qbm{\frac{1}{2} + \frac{1}{2} & \frac{1}{2}i - \frac{1}{2}i \\ -\frac{1}{2}i + \frac{1}{2}i & \frac{1}{2} + \frac{1}{2}} = \qbm{1 & 0 \\ 0 & 1} = I \\
+\end{align*}
+
+
+\subsection*{Problem 2}
+\textit{See HW instruction.}\newline
+
+\subsubsection*{(a)}
+
+Let $x = \qbm{x_1 \\ x_2}$, we have:
+
+\begin{align*}
+    Ax &= \qbm{\frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}} \cdot \qbm{x_1 \\ x_2} = b = \qbm{0 \\ 2 \sqrt{2}} \\
+    &= \begin{cases}
+        \frac{\sqrt{2}}{2} x_1 -\frac{\sqrt{2}}{2} x_2 = 0 \\
+        \frac{\sqrt{2}}{2} x_1 +\frac{\sqrt{2}}{2} x_2 = 2 \sqrt{2}
+    \end{cases} = \begin{cases}
+        x_1 = 2 \\
+        x_2 = 2
+    \end{cases} \\
+    \Longrightarrow x &= \qbm{2 \\ 2}
+\end{align*}
+
+\subsubsection*{(b)}
+If $A$ is to rotate $x$ for $45 \degree$ to $b$, reversely, we may counter rotate $b$ $-45 \degree$ to get $x$. As we have shown in \textit{Group HW5} and \textit{Group HW6}, to rotate a vector for $\phi$ degree, we need to left multiply $\qbm{\cos \phi & -\sin \phi \\ \sin \phi & \cos \phi}$ to the target vector.
+
+In this case, we have $\phi$ to be $-\frac{\pi}{4}$, thus the rotation matrix should be $\qbm{\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \\ -\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}}$. We call this matrix $C$ and now we try to left multiply it with $b$ to get $x$:
+
+\begin{align*}
+    C b &= \qbm{\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \\ -\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}} \cdot \qbm{0 \\ 2 \sqrt{2}} = x\\
+    x &= \qbm{2 \\ 2}
+\end{align*}
+
+\subsubsection*{(c)}
+
+We know $A$ is an orthogonal matrix as:
+
+\begin{equation*}
+    A A^{T} =  \qbm{\frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}}  \cdot \qbm{\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \\ -\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}} = \qbm{\frac{1}{2} + \frac{1}{2} & \frac{1}{2} - \frac{1}{2} \\ \frac{1}{2} - \frac{1}{2} & \frac{1}{2} + \frac{1}{2}} = \qbm{1 & 0 \\ 0 & 1} = I
+\end{equation*}
+
+Known this, we also know that $A^{-1} = A^T = \qbm{\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \\ -\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}}$. Now we may left multiply $A^{-1}$ to the both sides of $Ax = b$:
+
+\begin{align*}
+    A^{-1} A x &= A^{-1} b \\
+    I x &= A^{-1} b \\
+    x &= \qbm{\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \\ -\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}} \cdot \qbm{0 \\ 2 \sqrt{2}} = \qbm{2 \\ 2}
+\end{align*}
+
+\end{document}
+
