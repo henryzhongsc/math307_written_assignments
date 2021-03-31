@@ -1,0 +1,149 @@
+\documentclass[11pt]{article}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilc}{\texttt}
+\usepackage{etoolbox}
+\usepackage{algorithm}
+\usepackage{changepage}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usepackage{pifont}
+\usepackage{gensymb}
+\usetikzlibrary{matrix,positioning,arrows.meta,arrows}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+% \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\providecommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\providecommand{\myfloor}[1]{\left \lfloor #1 \right \rfloor }
+\providecommand{\qbm}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\providecommand{\qpm}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\providecommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\providecommand{\len}[1]{\left| #1 \right|}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\begin{document}
+
+
+
+\title{\textbf{MATH 307: Individual Homework 14}}
+
+
+\author{Shaochen (Henry) ZHONG, \ilc{sxz517@case.edu}}
+
+\date{Due and submitted on 03/29/2021 \\ Spring 2021, Dr. Guo}
+\maketitle
+
+
+
+\subsection*{Problem 1}
+\textit{See HW instruction.}\newline
+
+% Given a matrix $A$, since $N(A) = \{x \in F^n \mid Ax = 0 \}$, we know that the row space of $A$ is orthogonal to the null space of $A$. This means for every row of $A$, say $\{a_1, a_2, a_3, ..., a_m \}$, we must have $<a_i, x> = a_i^T \overline{x} = 0$; which implies $\overline{a_i^T} x = 0$.\newline
+%
+% This suggests $x$ also defines the null space of $\overline{A}$, thus we have (note $R(A)$ denotes row space of $A$):
+%
+% \begin{align*}
+%     R(A) &\perp N(\overline{A}) \\
+%     R(A^T) &\perp N(\overline{A^T}) \\
+%     range(A) &\perp N(A^*)
+% \end{align*}
+
+$\forall x \in range(A)$, we have $x = Ak$; $\forall y \in N(A^*)$, we must have $A^* y = 0$. Which means:
+
+\begin{align*}
+    <x, y> &= y^* x = y^* Ak \\
+    &= ((y^* A)^*)^* k \\
+    &= (A^* y)^* k \\
+    &= 0^* k = 0
+\end{align*}
+
+As the inner product yields zero, the two spaces in question are orthogonal to each other.
+
+\subsection*{Problem 2}
+\textit{See HW instruction.}\newline
+
+% \begin{align*}
+%     u_1 &= a_1 =  (1, 2 , 1) \\
+%     e_1 &= \frac{u_1}{\norm{u_1}} = \frac{1}{\sqrt{6}}(1, 2 , 1) = (\frac{1}{\sqrt{6}}, \frac{2}{\sqrt{6}}, \frac{1}{\sqrt{6}}) \\
+%     u_2 &= a_2 - <a_2 \cdot e_1>e_1 = (3, -1, 1) - \frac{2}{\sqrt{6}} (\frac{1}{\sqrt{6}}, \frac{2}{\sqrt{6}}, \frac{1}{\sqrt{6}}) \\
+%     &= (3, -1, 1)-(\frac{1}{3}, \frac{2}{3}, \frac{1}{3}) = (\frac{8}{3}, -\frac{1}{3}, \frac{2}{3}) \\
+%     e_2 &= \frac{u_2}{\norm{u_2}} = \frac{(\frac{8}{3}, -\frac{1}{3}, \frac{2}{3})}{\frac{1}{3}\sqrt{69}} = (\frac{8}{\sqrt{69}}, \frac{-1}{\sqrt{69}}, \frac{2}{\sqrt{69}}) \\
+%     u_3 &= a_3 - <a_3 \cdot e_1> e_1 - <a_3 \cdot e_2> e_2 \\
+%     &= (1, 1, 2)
+% \end{align*}
+
+
+\begin{align*}
+    u_1 &= a_1 =  (1, 3, 1) \\
+    e_1 &= \frac{u_1}{\norm{u_1}} = \frac{1}{\sqrt{11}}(1, 3, 1) = (\frac{1}{\sqrt{11}}, \frac{3}{\sqrt{11}}, \frac{1}{\sqrt{11}}) \\
+    u_2 &= a_2 - <a_2 \cdot e_1> e_1 = (2, -1, 1) - (\frac{2}{\sqrt{11}} - \frac{3}{\sqrt{11}} + \frac{1}{\sqrt{11}}) e_1 \\&= (2, -1, 1) - 0 e_1 = (2, -1, 1) \\
+    e_2 &= \frac{u_2}{\norm{u_2}} = \frac{1}{\sqrt{6}} (2, -1, 1)= (\frac{2}{\sqrt{6}}, \frac{-1}{\sqrt{6}}, \frac{1}{\sqrt{6}}) \\
+    u_3 &= a_3 - <a_3 \cdot e_1> e_1 - <a_3 \cdot e_2> e_2 \\
+    &= (1, 1, 2) - (\frac{1}{\sqrt{11}} + \frac{3}{\sqrt{11}} + \frac{2}{\sqrt{11}})e_1 -  <a_3 \cdot e_2> e_2 \\
+    &= (1, 1, 2) - \frac{6}{\sqrt{11}}(\frac{1}{\sqrt{11}}, \frac{3}{\sqrt{11}}, \frac{1}{\sqrt{11}}) -  <a_3 \cdot e_2> e_2  \\
+    &= (1, 1, 2) - (\frac{6}{11}, \frac{18}{11}, \frac{6}{11}) - <a_3 \cdot e_2> e_2  \\
+    &= (1, 1, 2) - (\frac{6}{11}, \frac{18}{11}, \frac{6}{11}) - (\frac{2}{\sqrt{6}} + \frac{-1}{\sqrt{6}}+ \frac{2}{\sqrt{6}}) e_2 \\
+    &= (1, 1, 2) - (\frac{6}{11}, \frac{18}{11}, \frac{6}{11}) -\frac{3}{\sqrt{6}}(\frac{2}{\sqrt{6}}, \frac{-1}{\sqrt{6}}, \frac{1}{\sqrt{6}}) \\
+    &= (1, 1, 2) - (\frac{6}{11}, \frac{18}{11}, \frac{6}{11}) - (1, \frac{-1}{2}, \frac{1}{2})  \\
+    &= (\frac{-6}{11}, \frac{-3}{22}, \frac{21}{22}) \\
+    e_3 &= \frac{u_3}{\norm{u_3}} = (-2 \sqrt{\frac{2}{33}}, \frac{-1}{\sqrt{66}}, \frac{7}{\sqrt{66}})
+\end{align*}
+
+Now we may represent $A$ as:
+
+\begin{align*}
+    A &= QR = [e_1 \mid e_2 \mid e_3] \qbm{a_1 \cdot e_1 & a_2 \cdot e_1 & a_3 \cdot e_1 \\ 0 & a_2 \cdot e_2 & a_3 \cdot e_2 \\
+    0 & 0 & a_3 \cdot e_3} \\
+    &= \qbm{\frac{1}{\sqrt{11}} & \frac{2}{\sqrt{6}} & -2 \sqrt{\frac{2}{33}} \\
+    \frac{3}{\sqrt{11}} & \frac{-1}{\sqrt{6}} &\frac{-1}{\sqrt{66}} \\
+    \frac{1}{\sqrt{11}} & \frac{1}{\sqrt{6}} &\frac{7}{\sqrt{66}}} \qbm{a_1 \cdot e_1 & a_2 \cdot e_1 & a_3 \cdot e_1 \\ 0 & a_2 \cdot e_2 & a_3 \cdot e_2 \\
+    0 & 0 & a_3 \cdot e_3} \\
+    &= \qbm{\frac{1}{\sqrt{11}} & \frac{2}{\sqrt{6}} & -2 \sqrt{\frac{2}{33}} \\
+    \frac{3}{\sqrt{11}} & \frac{-1}{\sqrt{6}} &\frac{-1}{\sqrt{66}} \\
+    \frac{1}{\sqrt{11}} & \frac{1}{\sqrt{6}} &\frac{7}{\sqrt{66}}} \qbm{\sqrt{11} & 0 & \frac{6}{\sqrt{11}} \\
+    0 & \sqrt{6} & 2\sqrt{\frac{2}{3}} - \frac{1}{\sqrt{6}}\\
+    0 & 0 & 3\sqrt{\frac{3}{22}}}
+\end{align*}
+
+% {1, 1, 2} \cdot {1/\sqrt{11}, 3/\sqrt{11}, 1/\sqrt{11}}
+% {1, 1, 2} \cdot {2/\sqrt{6}, -1/\sqrt{6}, 1/\sqrt{6}}
+% {1, 1, 2} \cdot {-2\sqrt{2/33}, -1/\sqrt{66}, 7/\sqrt{66}}
+
+% {{1/\sqrt{11}, 2/\sqrt{6}, -2 \sqrt{2/33}}, {3/\sqrt{11}, -1/\sqrt{6}, -1/\sqrt{66}}, {1/\sqrt{11}, 1/\sqrt{6}, 7/\sqrt{66}}}
+% {{0, 2/\sqrt{11}, -2/\sqrt{11}}, {0, 0, \sqrt{3/2}}, {0, 0, -\sqrt{3/22}}}
+% {{1/\sqrt{11}, 2/\sqrt{6}, -2 \sqrt{2/33}}, {3/\sqrt{11}, -1/\sqrt{6}, -1/\sqrt{66}}, {1/\sqrt{11}, 1/\sqrt{6}, 7/\sqrt{66}}}{{0, 2/\sqrt{11}, -2/\sqrt{11}}, {0, 0, \sqrt{3/2}}, {0, 0, -\sqrt{3/22}}}
+
+% QR decomposition {{1, 2, 1}, {3, -1, 1}, {1, 1, 2}}
+
+% Sorry but this is way too much tedious calculation to go through, so I'll just leave it as this.
+
+\subsection*{Problem 3}
+\textit{See HW instruction.}\newline
+
+We must have $A = QR = AI$, where $Q = A$ and $R = I$. Since every column in $A$ are orthogonal, we have $Q = A$ being the orthogonal matrix; and since $I$ is an upper-triangular matrix, we may have $R = I$.
+
+It is my understanding that this is good to go as the $Q$ in $QR$ decomposition only requires being an orthogonal matrix, regardless if its entries are normalized. But in case the preferred answer wants a normalized $Q$ (as normalization is mentioned in the question), we may have $A'$ being a column-normalized version of $A$, where each entry of $A'$ is $\frac{a_{ij}}{\norm{a_i}}$ in contrast to $a_ij$ in $A$ (where $a_{ij}$ refers to the $j$-th row entry in $i$-th column in $A$); and $I'$ being a diagonal matrix similar to $I$, but instead of the $1$ entries in $I$, it will have $\norm{a_1}, \norm{a_2}, ..., \norm{a_n}$ respectively along the diagonal line.
+
+\end{document}
+
