@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilc}{\texttt}
+\usepackage{etoolbox}
+\usepackage{algorithm}
+\usepackage{changepage}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usepackage{pifont}
+\usepackage{gensymb}
+\usetikzlibrary{matrix,positioning,arrows.meta,arrows}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+% \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\providecommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\providecommand{\myfloor}[1]{\left \lfloor #1 \right \rfloor }
+\providecommand{\qbm}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\providecommand{\qpm}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\providecommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\providecommand{\len}[1]{\left| #1 \right|}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\begin{document}
+
+
+
+\title{\textbf{MATH 307: Individual Homework 15}}
+
+
+\author{Shaochen (Henry) ZHONG, \ilc{sxz517@case.edu}}
+
+\date{Due and submitted on 03/31/2021 \\ Spring 2021, Dr. Guo}
+\maketitle
+
+
+
+\subsection*{Problem 1}
+\textit{Textbook page 80, problem 1.}\newline
+
+\textbf{W.T.S.} $\norm{Ax} \leq \norm{A} \norm{x}$
+
+\begin{align*}
+    \text{Since} \ \norm{A} &= \text{sup}_{x \neq 0} \frac{\norm{Ax}}{\norm{x}} \\
+    \text{There must be } \ \frac{\norm{Ax}}{\norm{x}} &\leq \norm{A} \\
+    \Longrightarrow \norm{Ax} &\leq \norm{A}\norm{x}
+\end{align*}
+
+\textbf{W.T.S.} $\norm{AB} \leq \norm{A} \norm{B}$
+
+\begin{align*}
+    \norm{AB} &= \text{sup}_{x \neq 0} \frac{\norm{(AB)x}}{\norm{x}}= \text{sup}_{\norm{x} = 1}  \norm{A(Bx)} \\
+    &\leq \text{sup}_{\norm{x} = 1} \norm{A} \norm{B(x)} \\
+    &\leq \text{sup}_{\norm{x} = 1} \norm{A} \norm{B} \\ \norm{x} &= \norm{A} \norm{B} \\
+    \norm{AB} &\leq \norm{A} \norm{B}
+\end{align*}
+
+
+
+\subsection*{Problem 2}
+\textit{Textbook page 80, problem 2.}\newline
+
+\paragraph*{$\infty$ norm}
+
+As $\norm{A}_\infty = \max_{i} \sum\limits_{j = 1}^{n} \len{a_{ij}}$, we will take the maximum row sum of the matrix, which is $\len{-20} + \len{20} + \len{2} + \len{-2} + \len{0} = 44$.
+
+\paragraph*{1-norm}
+
+Similar to the $\infty$ norm above, as $\norm{A}_1 = \max_{j} \sum\limits_{i = 1}^{m} \len{a_{ij}}$, we will take the maximum column sum of the matrix, which is $\len{4} + \len{-1} + \len{5} + \len{20} = 30$.
+
+\paragraph*{Frobenius norm}
+
+As $\norm{A}_F = \sqrt{\sum\limits_i^m \sum\limits_j^n \len{a_{ij}}^2}$, we will take the square of each entries, add them together, and square root it. For simplicity I will omit the copying, the result should be $\sqrt{1279}$.
+
+
+\subsection*{Problem 3}
+\textit{Textbook page 80, problem 3.}\newline
+
+\textbf{W.T.S.} $\norm{PA}_2 = \norm{A}_2$
+
+Known that for an orthogonal matrix $A$, there must be $A^T A = I$; and also known $\norm{A} = \sqrt{A^T A}$. Note
+
+\begin{align*}
+    \norm{QA} &= \sqrt{(QA)^T QA} = \sqrt{A^T Q^T Q A} \\
+    &= \sqrt{A^T I A} = \sqrt{A^T A} \\
+    &= \norm{A}
+\end{align*}
+
+Since this relationship is not restricted to any $p$-norm, we may have $\norm{QA}_2 = \norm{A}_2$.\newline
+
+\textbf{W.T.S.} $\norm{AQ}_2 = \norm{A}_2$
+
+Known that $\norm{Qx}_2 = \sqrt{<Qx, Qx>} = \sqrt{<x, Q^T Q x} = \sqrt{<x, x>} = \norm{x}_2$, we have:
+
+\begin{align*}
+    \norm{AQ}_2 &= \text{sup}_{\norm{x}_2 = 1} \norm{AQx}_2 =  \text{sup}_{\norm{Qx}_2 = 1} \norm{A(Qx)}_2 \\
+    &= \text{sup}_{\norm{y}_2 = 1} \norm{Ay}_2 = \norm{A}_2
+\end{align*}
+
+\subsection*{Problem 4}
+\textit{Textbook page 80, problem 4.}\newline
+
+$\max(A) = \max \{a_{ij}\}$ is not a norm as it does not support \textit{non-negetivity} $\max(A) > 0$ when $A \neq 0$. Take a matrix with all negative entries, say $A = \qbm{-1 & -1 \\ -1 & -1}$. We have $\max(A) = -1 < 0$, non-negetivity is violated and therefore not a norm.\newline
+
+$\max(\len{AB}) = \max \{|a_{ij}|\}$ is also not a norm as it does not support \textit{submultiplicative} $\max(AB) \leq \max(A)\max(B)$. Take $A = B = \qbm{1 & 1 \\ 1 & 1}$, we have:
+
+\begin{align*}
+    \max(\len{AB}) &= \max(\qbm{1 & 1 \\ 1 & 1}\qbm{1 & 1 \\ 1 & 1}) = \max(\qbm{\len{2} & \len{2} \\ \len{2} & \len{2}}) = 2 \\
+    \max(\len{A})\max(\len{B}) &= \max(\qbm{\len{1} & \len{1} \\ \len{1} & \len{1}}) \max(\qbm{\len{1} & \len{1} \\\len{1} & \len{1}}) = 1 \\
+    \Longrightarrow \max(AB) &> \max(A)\max(B)
+\end{align*}
+
+As submultiplicative is violated, it is also not a norm.
+
+
+
+
+\end{document}
+
