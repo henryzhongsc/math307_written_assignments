@@ -1,0 +1,120 @@
+\documentclass[11pt]{article}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilc}{\texttt}
+\usepackage{etoolbox}
+\usepackage{algorithm}
+\usepackage{changepage}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usepackage{gensymb}
+\usetikzlibrary{matrix,positioning,arrows.meta,arrows}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+% \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\providecommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\providecommand{\myfloor}[1]{\left \lfloor #1 \right \rfloor }
+\providecommand{\qbm}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\providecommand{\qpm}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\providecommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\providecommand{\len}[1]{\left| #1 \right|}
+
+\begin{document}
+
+
+
+
+\title{\textbf{MATH 307: Group Homework 7}}
+
+
+\author{\textit{Group 8}\\
+Shaochen (Henry) ZHONG, Zhitao (Robert) CHEN, John MAYS, Huaijin XIN\\ \ilc{\{sxz517, zxc325, jkm100, hxx200\}@case.edu}}
+
+\date{Due and submitted on 04/02/2021 \\ Spring 2021, Dr. Guo}
+\maketitle
+
+
+
+
+\subsection*{Problem 1}
+\textit{See HW instruction.}\newline
+
+\textbf{W.T.S} For all matrices $A$ in $F^{m \times n}$ with all of its row sums being $1$, the vector $\qbm{1 \\ 1\\ \vdots \\ 1} \in F^{n \times 1}$ can be the eigenvector.
+
+\begin{align*}
+    Av &= \lambda v \\
+    \qbm{a^*_1 \\ a^*_2 \\ \vdots \\ a^*_n} \qbm{1 \\ 1 \\ \vdots \\ 1} &= \lambda  \qbm{1 \\ 1 \\ \vdots \\ 1} \\
+    \text{Suppose} \ \lambda &= 1 \ \text{ we have} \\
+    \qbm{1 \\ 1 \\ \vdots \\ 1} &=  \qbm{1 \\ 1 \\ \vdots \\ 1}
+\end{align*}
+
+Since the $Av = \lambda v$ equality is fulfilled with $\lambda = 1$, this is the corresponding eigenvalue for $v$.
+
+\subsection*{Problem 2}
+\textit{See HW instruction.}\newline
+
+\subsubsection*{(a)}
+
+\begin{align*}
+    Au &= \lambda u \\
+    (\lambda + c)u &= \lambda u + cu \\
+    (A + cI)u &= Au + cIu = Au + cU = \lambda u + cu \\
+    (A + cI)u &= (\lambda + c)u
+\end{align*}
+
+\subsubsection*{(b)}
+
+In $\textbf{Problem 1}$ we have proved that for a matrix with row sum $1$, we may have $\qbm{1 \\ 1\\ \vdots \\ 1}$ to be the eigenvector. This conclusion can in fact be expand to matrices with row sum $s$, as:
+
+\begin{align*}
+    Av &= \lambda v \\
+    A \qbm{1 \\ 1\\ \vdots \\ 1} &= \qbm{s \\ s\\ \vdots \\ s} = s \qbm{1 \\ 1\\ \vdots \\ 1} \\
+    \lambda &= s \\
+    v &= \qbm{1 \\ 1\\ \vdots \\ 1}
+\end{align*}
+
+Thus, for matrix with row sum $s = 0$ we have the eigenvalue being $\lambda = s = 0$.
+
+Known that $Av = \lambda v = 0 v = 0$. For $A$ to be invertable we must have $AB = BA = I$, which implies there should be $BAv = Iv = 0 \Longrightarrow v = 0$. This contradicts $v = \qbm{1 \\ 1\\ \vdots \\ 1}$ and therefore $A$ is not invertible.
+
+
+\subsection*{Problem 3}
+\textit{See HW instruction.}\newline
+
+Known that $Q$ is an unitary matrix, we must have $Q^* Q = QQ^* = I$. Now to investigate its eigenvalue $\lambda$:
+
+\begin{align*}
+    Qv &= \lambda v \\
+    (Qv)^* &= (\lambda v)* \\
+    v^* Q^* &=  \lambda^* v^*\\
+    (v^* Q^*) Qv &= (\lambda^* v^*)  \lambda v \\
+    v^* I v &= (\lambda^* \lambda) v^* v \\
+    \norm{v}^2 &= \len{\lambda}^2 \norm{v}^2 \\
+    1 &= \len{\lambda}^2 \\
+    \len{\lambda} &= 1
+\end{align*}
+
+The equality in question is therefore proven.
+
+\end{document}
+
