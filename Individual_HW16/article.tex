@@ -1,0 +1,136 @@
+\documentclass[11pt]{article}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilc}{\texttt}
+\usepackage{etoolbox}
+\usepackage{algorithm}
+\usepackage{changepage}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usepackage{pifont}
+\usepackage{gensymb}
+\usetikzlibrary{matrix,positioning,arrows.meta,arrows}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+% \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\providecommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\providecommand{\myfloor}[1]{\left \lfloor #1 \right \rfloor }
+\providecommand{\qbm}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\providecommand{\qpm}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\providecommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\providecommand{\len}[1]{\left| #1 \right|}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\begin{document}
+
+
+
+\title{\textbf{MATH 307: Individual Homework 16}}
+
+
+\author{Shaochen (Henry) ZHONG, \ilc{sxz517@case.edu}}
+
+\date{Due and submitted on 04/05/2021 \\ Spring 2021, Dr. Guo}
+\maketitle
+
+
+
+\subsection*{Problem 1}
+\textit{See HW instruction.}\newline
+
+First to find eigenvalues:
+\begin{align*}
+    \det(A - \lambda I) &= \det\qbm{-2-\lambda & 2 \\ -1 & -3-\lambda} = 0 \\
+    0 &= (-2-\lambda)(-3-\lambda) - (-2 \cdot -1)  \\
+    &= \lambda^2 + 5\lambda + 4 = (\lambda + 1)(\lambda + 4) \\
+    \Longrightarrow &\begin{cases}
+        \lambda_1 = -1 \\
+        \lambda_2 = -4
+    \end{cases}
+\end{align*}
+
+Then to find the corresponding eigenvectors:
+\begin{align*}
+    Av_1 &= \lambda_1 v_1 \\
+    \qbm{-2x - 2y \\ -1x -3y} &= \qbm{\lambda_1 x \\ \lambda_1 y} = \qbm{-x \\ -y} \\
+    x &= -2y \\
+    \Longrightarrow v_1 &= \qbm{-2 \\ 1}
+\end{align*}
+
+\begin{align*}
+    Av_2 &= \lambda_2 v_2 \\
+    \qbm{-2x - 2y \\ -1x -3y} &= \qbm{\lambda_2 x \\ \lambda_2 y} = \qbm{-4x \\ -4y} \\
+    2x &= 2y \\
+    \Longrightarrow v_2 &= \qbm{1 \\ 1}
+\end{align*}
+
+Thus, we have eigenvalues being $\lambda_1 = -1, \lambda_2 = -4$ and their corresponding eigenvectors being $\qbm{-2 \\ 1}, \qbm{1 \\ 1}$.
+
+\subsection*{Problem 2}
+\textit{See HW instruction.}\newline
+
+% https://math.stackexchange.com/questions/767835/proving-eigenvalue-squared-is-eigenvalue-of-a2/767838
+
+First we want to find out what will be the eigenvalue and its corresponding eigenvector for $A^-1$
+
+\begin{align*}
+    Av &= \lambda v \\
+    A^{-1} Av &= A^{-1} \lambda v \\
+    v &= A^{-1} \lambda v \\
+    \lambda^{-1} v &= \lambda^{-1} A^{-1} \lambda v \\
+    \lambda^{-1} v &= Av
+\end{align*}
+
+Known that the eigenvalue for $A^{-1}$ is $\lambda^{-1}$ and its corresponding eigenvector is still $v$. Assume that $Bv = \lambda v$ we want to show $B^k$ has eigenvalue $\lambda^k$ and eigenvector $v$.
+
+\begin{align*}
+    B^{k-1} Bv &= B^{k-1} \lambda v \\
+    &= B^{k-2} \lambda (Bv) = B^{k-2} \lambda (\lambda v) \\
+    B^k v &= B^{k-2} \lambda^2 v \\
+    &= B^{k-3} \lambda^2 (Bv) = B^{k-3} \lambda^3 v \\
+    &= B^{k-4} \lambda^3 (Bv) = B^{k-4} \lambda^4 v \\
+    &\dots \\
+    B^k v &= B^{k-k} \lambda^{k-1} (Bv) = \lambda^k v
+\end{align*}
+
+So in this case we have $B = A^-1$ and $k = 3$, so we have $(A^{-1})^3 v = (\lambda^{-1})^3 v$. As $(\lambda^{-1})^3 = \lambda^{-3}$ is the eigenvalue and $v$ is the corresponding eigenvector for $(A^{-1})^3$.
+
+
+\subsection*{Problem 3}
+\textit{See HW instruction.}\newline
+
+In the previous $\textbf{Problem 2}$ we have established that $Av = \lambda v \Longleftrightarrow A^k v = \lambda^k v$, so we must have $Pv = \lambda v \Longleftrightarrow P^2 v = \lambda^2 v$.
+
+Since $P = P^2$, we have $Pv = P^2 v = \lambda ^2 v = \lambda v$, which implies $\lambda ^2 = \lambda$. Thus, there must be $\lambda = \{0, 1\}$.
+
+
+
+\subsection*{Problem 4}
+\textit{See HW instruction.}\newline
+
+
+
+
+\end{document}
+
