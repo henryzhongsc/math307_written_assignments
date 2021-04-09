@@ -1,0 +1,152 @@
+\documentclass[11pt]{article}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilc}{\texttt}
+\usepackage{etoolbox}
+\usepackage{algorithm}
+\usepackage{changepage}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usepackage{gensymb}
+\usetikzlibrary{matrix,positioning,arrows.meta,arrows}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+% \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\providecommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\providecommand{\myfloor}[1]{\left \lfloor #1 \right \rfloor }
+\providecommand{\qbm}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\providecommand{\qpm}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\providecommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\providecommand{\len}[1]{\left| #1 \right|}
+
+\begin{document}
+
+
+
+
+\title{\textbf{MATH 307: Group Homework 8}}
+
+
+\author{\textit{Group 8}\\
+Shaochen (Henry) ZHONG, Zhitao (Robert) CHEN, John MAYS, Huaijin XIN\\ \ilc{\{sxz517, zxc325, jkm100, hxx200\}@case.edu}}
+
+\date{Due and submitted on 04/09/2021 \\ Spring 2021, Dr. Guo}
+\maketitle
+
+
+
+
+\subsection*{Problem 1}
+\textit{See HW instruction.}\newline
+
+\begin{align*}
+    \det(A - \lambda I) &= \det \qbm{3- \lambda & 0 & 1 \\ 0 & 2-\lambda & 1 \\ 0 & 0 & 2-\lambda} \\
+    &= -\lambda^3 + 7 \lambda ^2 - 16\lambda + 12 = -(\lambda - 2)^2 (\lambda - 3) = 0 \\
+    \Longrightarrow& \begin{cases}
+        \lambda_1 = 2 \\
+        \lambda_2 = 3
+    \end{cases}
+\end{align*}
+
+\begin{align*}
+    0 &= (A - \lambda_1 I) v_{\lambda_1} \\
+    &= \qbm{3- \lambda_1 & 0 & 1 \\ 0 & 2-\lambda_1 & 1 \\ 0 & 0 & 2-\lambda_1} v \\
+    &= \qbm{3- 2 & 0 & 1 \\ 0 & 2-2 & 1 \\ 0 & 0 & 2-2} v \Rightarrow \begin{cases}
+        v_1 + v_3 = 0 \\
+        0v_2 + v_3 = 0 \\
+        0v_3 = 0
+    \end{cases} \\
+    \Longrightarrow v_{\lambda_1} &= \qbm{0 \\ 1 \\ 0}
+\end{align*}
+
+Known that $\lambda_1 = 2$ has an algebraic multiplicity of 2 (appered twice as the root); but the eigenspace of $\lambda_1$ is spanned by $ \qbm{0 \\ 1 \\ 0}$, which means it only has a geometric multiplicity of 1. Thus, the matrix is defective.
+
+\subsection*{Problem 2}
+\textit{See HW instruction.}\newline
+% https://math.stackexchange.com/questions/762984/whats-the-proof-stategy-for-hermitian-matrix-has-orthogonal-eigenvectors-for-d
+
+Known that $A = A^*$, let $Av = \lambda v$, $Aw = \mu w$ and we must have:
+
+\begin{align*}
+    Aw &= \mu w \\
+    v^* Aw &= v^* \mu w = \mu (v^* w) \\
+    Aw &= A^*w \\
+    v^* A^* w  &= (Av)^* w = (\lambda v)^* w = \lambda (v^* w) \\
+    \Longrightarrow \mu (v^* w) &= \lambda (v^* w)
+\end{align*}
+
+Since $\lambda, \mu \neq 0$ and $\lambda \neq \mu$ for being distinct eigenvalues, there must be $v^*w = 0 = <w, v>$. Thus, the eigenvectors-in-question are orthogonal.
+
+
+\subsection*{Problem 3}
+\textit{See HW instruction.}\newline
+
+$A\in F^{n \times n} = U\Sigma V^{*}$ where $U, V$ are unitary and $\Sigma$ is diagonal, we must have:
+
+\begin{align*}
+    A^{*}A &=(U \Sigma V^{*})^{*}(U \Sigma V^{*}) \\
+    &=(V \Sigma^{*} U^{*})(U \Sigma V^{*}) \\
+    &= V \Sigma^{*} U^{*}U \Sigma V^{*} \\
+    &= V \Sigma^{*} I \Sigma V^{*} \\
+    &= V \Sigma^{*} \Sigma V^{*} \\
+    &= V (\Sigma^{*} \Sigma) V^{*}
+\end{align*}
+
+Since $V$ is a unitary matrix, it is also invertible, and $V^{*}=V^{-1}$. Therefore:
+
+\begin{equation*}
+    V (\Sigma^{*} \Sigma) V^{*} = V (\Sigma^{*} \Sigma) V^{-1}
+\end{equation*}
+
+Furthermore, the resultant matrix of $\Sigma^{*}\Sigma$ will also be a diagonal matrix $=\text{diag}(|\sigma_1|^2,|\sigma_2|^2,\dots, |\sigma_n|^2)$.\newline
+
+Since $V$ is invertible, $V^{*} = V^{-1}$, and $\Sigma^{*}\Sigma$ is a diagonal matrix, $V (\Sigma^{*}\Sigma) V^{*}$ is an eigendecomposition of $A^{*}A$.
+
+\subsection*{Problem 4}
+\textit{See HW instruction.}\newline
+
+\begin{align*}
+    Ax &= b \\
+    U \Sigma V^T x &= b \\
+    (V \Sigma^{-1} U^T) U \Sigma V^T x &= (V \Sigma^{-1} U^T)b \\
+    V \Sigma^{-1} (U^T U) \Sigma V^T x &= V \Sigma^{-1} U^T b \\
+    V (\Sigma^{-1} \Sigma) V^T x &= V \Sigma^{-1} U^T b \\
+    V V^T x &=V \Sigma^{-1} U^T b \\
+    x &= V \Sigma^{-1} U^T b
+\end{align*}
+
+Subsitute the known values into above equation, we have:
+
+\begin{align*}
+    x &= V \Sigma^{-1} U^T b \\
+    &= \qbm{0 & 1 \\ 1 & 0} \qbm{2 & 0 \\ 0 & 1}^{-1} \qbm{\frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}}^T \qbm{-\frac{3}{2} \sqrt{2} \\ -\frac{\sqrt{2}}{2}} \\
+    &= \qbm{0 & 1 \\ 1 & 0} \qbm{\frac{1}{2} & 0 \\ 0 & 1} \qbm{\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \\ -\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}} \qbm{-\frac{3}{2} \sqrt{2} \\ -\frac{\sqrt{2}}{2}} \\
+    &= \qbm{1 \\ -1}
+\end{align*}
+
+Thus, $x = \qbm{1 \\ -1}$.
+
+% {{0, 1}, {1, 0}} {{1/2, 0}, {0, 1}} {{\sqrt{2}/2, \sqrt{2}/2}, {-\sqrt{2}/2, \sqrt{2}/2}} {{-3/2 \sqrt{2}},{-\sqrt{2}/2}}
+
+\end{document}
+
