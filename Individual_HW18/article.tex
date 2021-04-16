@@ -1,0 +1,119 @@
+\documentclass[11pt]{article}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilc}{\texttt}
+\usepackage{etoolbox}
+\usepackage{algorithm}
+\usepackage{changepage}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usepackage{pifont}
+\usepackage{gensymb}
+\usetikzlibrary{matrix,positioning,arrows.meta,arrows}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+% \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\providecommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\providecommand{\myfloor}[1]{\left \lfloor #1 \right \rfloor }
+\providecommand{\qbm}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\providecommand{\qpm}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\providecommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\providecommand{\len}[1]{\left| #1 \right|}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\begin{document}
+
+
+
+\title{\textbf{MATH 307: Individual Homework 18}}
+
+
+\author{Shaochen (Henry) ZHONG, \ilc{sxz517@case.edu}}
+
+\date{Due and submitted on 04/14/2021 \\ Spring 2021, Dr. Guo}
+\maketitle
+
+
+
+\subsection*{Problem 1}
+\textit{See HW instruction.}\newline
+
+The question worded as \textit{``find a basis for both $range(A)$ and $range(A^*)$''}, I am a bit unsure if I should find one basis for $range(A)$ and another basis $range(A^*)$, or should I find a single basis for both of them -- it seems like the question is asking the latter one, but I don't think that is possible given that $A \in F^{m \times n}$; and if $m \neq n$, the dimension of row and column space is intrinctly different.\newline
+
+Let $\sigma_1, \sigma_2, \dots, \sigma_r$ be the nonzero singular values in $\Sigma$ of $A = U \Sigma V^*$, we know that $\{u_1, u_2, ..., u_r\}$ is a basis for $range(A)$ because of the following.
+
+\textbf{W.T.S.} $range(A) \subset span(u_1, u_2, ..., u_r)$
+
+$\forall y \in range(A)$, $y = Ax$ for some $x \in F^n$. Since we know that $V$ is unitary, columns of $V$ form a basis for $F^n$. Thus, we have $x = \sum \alpha_i v_i$; also known that $AV = U \Sigma$, we have:
+
+\begin{align*}
+    y &= Ax = A(\sum_{i=1}^r \alpha_i v_i) \\
+    &= \sum_{i=1}^r \alpha_i A v_i \\
+    &= \sum_{i=1}^r\alpha_i \sigma_i u_i \in span(u_1, u_2, ..., u_r)
+\end{align*}
+
+This implies $range(A) \subset span(u_1, u_2, \dots, u_r)$\newline
+
+\textbf{W.T.S.} $span(u_1, u_2, \dots, u_r) \subset  range(A)$
+
+\begin{align*}
+    AV &= U \Sigma \\
+    A v_i &= \sigma_i u_i \ \text{for} \ i = 1, \dots, r\\
+    u_i &= A(\frac{v_i}{\sigma_i}) \\
+    \Longrightarrow& u_i \in range(A)
+\end{align*}
+
+This implies $span(u_1, u_2, \dots, u_r) \subset range(A)$. Combine both findings, we have $range(A) = span(u_1, u_2, \dots, u_r)$. As $u_1, u_2, \dots, u_r$ are linearly independent, it is a basis for $range(A)$ the column space of $A$.\newline
+
+Similarily, we have $A^* = V \Sigma U^*$ for $V$ being unitary (implies orthogonal and linearly independent columns). So, we have $\{v_1, v_2, \dots, v_r\}$ to be basis for $range(A^*)$ the row space of $A$.\newline
+
+Since both $\{u_1, u_2, \dots, u_r\}$ and $\{v_1, v_2, \dots, v_r\}$ have a dimension of $r$. The column rank is same as the row rank of $A$.
+
+
+
+\subsection*{Problem 2}
+\textit{See HW instruction.}\newline
+
+\subsubsection*{(a)}
+As we have previously established in the above \textbf{Problem 1}. The row rank of $A$ is the number of nonzero singular values in $\Sigma$ of $A = U \Sigma V^*$. In this case, we have 5 nonzero singular values, so the row rank of $A$ is 5. The orthonormal basis of $range(A^*)$ will therefore be $\{v_1, v_2, \dots, v_5 \}$.
+
+For proving. We know that $\{v_1, v_2, \dots, v_5 \}$ is a orthonormal set as it came out from an unitary matrix $V$. We also know there must be $span(v_1, v_2, \dots, v_5) = range(A^*)$ as we have previously showned in \textbf{Problem 1}. Thus, $\{v_1, v_2, \dots, v_5 \}$ is a basis of $range(A^*)$.
+
+\subsubsection*{(b)}
+
+The rank-nullity theorem tells us that $n = r + l$ for $r$ stands for rank and $l$ stands for nullity. In this case $n = 6$ as $A^* \in F^{8 \times 6}$, we have the nullity being $l = n - r = 6 - 5 = 1$.
+
+As $A^* = V \Sigma U^*$, we have $\{u_{r+1}, \dots, u_n \} = \{u_6 \}$ to be the basis of $null(A^*)$. As we have $null(A^*) \subset span(u_6)$ because they are both $\in F^m$. We also have $span(u_6) \subset null(A^*)$ as:
+
+\begin{align*}
+    A^* U &= V \Sigma \\
+    A^* u_i &= \sigma_i v_i \ \text{for} \ i = r+1, \dots, n\\
+    A^* u_i &= 0 \\
+    \Longrightarrow& span(u_{r+1}, \dots, u_n) \subset null(A^*)
+\end{align*}
+
+Which is equivalent to $span(u_6) \subset null(A^*)$. Combine the two findings we have $span(u_6) = null(A^*)$. As $\{u_6 \}$ is obviously linearly independent, $\{u_6 \}$  is the basis of $null(A^*)$.
+
+\end{document}
+
