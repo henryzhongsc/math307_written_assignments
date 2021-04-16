@@ -1,0 +1,105 @@
+\documentclass[11pt]{article}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilc}{\texttt}
+\usepackage{etoolbox}
+\usepackage{algorithm}
+\usepackage{changepage}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usepackage{gensymb}
+\usetikzlibrary{matrix,positioning,arrows.meta,arrows}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+% \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\providecommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\providecommand{\myfloor}[1]{\left \lfloor #1 \right \rfloor }
+\providecommand{\qbm}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\providecommand{\qpm}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\providecommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\providecommand{\len}[1]{\left| #1 \right|}
+
+\begin{document}
+
+
+
+
+\title{\textbf{MATH 307: Group Homework 8}}
+
+
+\author{\textit{Group 8}\\
+Shaochen (Henry) ZHONG, Zhitao (Robert) CHEN, John MAYS, Huaijin XIN\\ \ilc{\{sxz517, zxc325, jkm100, hxx200\}@case.edu}}
+
+\date{Due and submitted on 04/09/2021 \\ Spring 2021, Dr. Guo}
+\maketitle
+
+
+
+
+\subsection*{Problem 1}
+\textit{See HW instruction.}\newline
+
+$\forall x = \qbm{Re(x_1) + Im(x_1) \\ Re(x_2) + Im(x_2)} \in \mathbb{C}^2$, we have:
+
+\begin{align*}
+    \qbm{Re(x_1) + Im(x_1) \\ Re(x_2) + Im(x_2)} &= \underbrace{Re(x_1) e_1 + Im(x_1) e_1}_{\in V} + \underbrace{Re(x_2) e_2 + Im(x_2) e_2}_{\in W} \\
+    &= \underbrace{-Re(x_1) (e_2 - e_1) - Im(x_1) (e_2 - e_1)}_{\in V} + \underbrace{(Re(x_1) + Re(x_2) + Im(x_1) + Im(x_2))e_2}_{\in W} \\
+    &= -Re(x_1) e_2 + Re(x_1) e_1 -Im(x_1) e_2 + Im(x_1) e_1 \\
+    &\ \ \ \ + Re(x_1) e_2 + Re(x_2) e_2 + Im(x_1) e_2 + Im(x_2) e_2 \\
+    &= Re(x_1) e_1 + Re(x_2) e_2 + Im(x_1) e_1 + Im(x_2) e_2 \\
+    \Longrightarrow \qbm{x_1 \\ x_2} &= V + W
+\end{align*}
+
+Although we may have $\mathbb{C}^2 = V + W$, the solution is not unique and therefore not a direct sum.
+
+\subsection*{Problem 2}
+\textit{See HW instruction.}\newline
+
+Let $e_1 = \qbm{1 \\ 0 \\ 0}$, $e_2 = \qbm{0 \\ 1 \\ 0}$, and $e_3 = \qbm{0 \\ 0 \\ 1}$. We have $\forall x = \qbm{x_1 \\ x_2 \\ x_3} \in \mathbb{R}^3$ to be:
+
+\begin{align*}
+    \qbm{x_1\\ x_2\\ x_3} &= \underbrace{x_1 e_1 + x_2 e_2}_{\in V} + \underbrace{x_3 e_3}_{\in W} = V + W \\
+    &= \underbrace{x_1 e_1}_{\in V} + \underbrace{x_2 e_2 + x_3 e_3}_{\in W} = V + W
+\end{align*}
+
+As shown above, although we may have $\mathbb{R}^3 = V + W$, the solution is not unique and therefore not a direct sum.
+
+
+\subsection*{Problem 3}
+\textit{See HW instruction.}\newline
+
+For $A \in C^{m \times n}$ where $A = U \Sigma V^*$ and $A^* = V \Sigma^* U^*$ . Assume there are $r$ number of nonzero singular values in $\Sigma$, and known that $U$ is an unitary matrix with orthonormal columns, we have:
+
+\begin{align*}
+    range(A) &= span(u_1, u_2, \dots, u_r) \\
+    null(A^*) &= span(u_{r+1}, \dots, u_m) \\
+    \Longrightarrow range(A) + null(A^*) &= span(u_1, u_2, \dots, u_m)
+\end{align*}
+
+This implies $\forall x \in \mathbb{C}^m, x = \underbrace{\sum\limits_{i=1}^r c_i u_i}_{\in range(A)} + \underbrace{\sum\limits_{j = r+1}^m  c_j u_j}_{\in null(A^*)}$, thus $\mathbb{C}^m = range(A) + null(A^*)$.
+
+Now to show uniqueness, we know that $range(A) \perp null(A^*)$ from \textbf{Midterm 2}'s last question. This implies $V \cap W = \{0 \}$ and therefore $\mathbb{C}^m = range(A) \oplus null(A^*)$
+
+
+\end{document}
+
