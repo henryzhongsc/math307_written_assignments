@@ -1,0 +1,95 @@
+\documentclass[11pt]{article}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilc}{\texttt}
+\usepackage{etoolbox}
+\usepackage{algorithm}
+\usepackage{changepage}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usepackage{pifont}
+\usepackage{gensymb}
+\usetikzlibrary{matrix,positioning,arrows.meta,arrows}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+% \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\providecommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\providecommand{\myfloor}[1]{\left \lfloor #1 \right \rfloor }
+\providecommand{\qbm}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\providecommand{\qpm}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\providecommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\providecommand{\len}[1]{\left| #1 \right|}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\begin{document}
+
+
+
+\title{\textbf{MATH 307: Individual Homework 17}}
+
+
+\author{Shaochen (Henry) ZHONG, \ilc{sxz517@case.edu}}
+
+\date{Due and submitted on 04/12/2021 \\ Spring 2021, Dr. Guo}
+\maketitle
+
+
+
+\subsection*{Problem 1}
+\textit{See HW instruction.}\newline
+
+Known that $A = U \Sigma V^*$ with $U, V$ being orthogonal (implies $U^{-1} = U^*$ and $V^{-1} = V^*$)
+
+\begin{align*}
+    A &= U \Sigma V^* \\
+    A^{-1} &= (U \Sigma V^*)^{-1} = (V^*)^{-1} \Sigma^{-1} U^{-1} \\
+    &= V \Sigma^{-1} U^*
+\end{align*}
+
+
+\subsection*{Problem 2}
+\textit{See HW instruction.}\newline
+
+Known that $A = U \Sigma V^*$, and we know that $\Sigma^* \Sigma = \Sigma \Sigma^* = \Sigma^2$ since $\Sigma$ is a square diagonal matrix with nonzero diagonal entries. We have:
+
+\begin{align*}
+    A^* A &= (U \Sigma V^*)^* (U \Sigma V^*) \\
+    &= V \Sigma^* U^* U \Sigma V^* \\
+    &= V \Sigma^* \Sigma V^* \\
+    &= V \Sigma^2 V^*
+\end{align*}
+
+
+\begin{align*}
+    AA^* &= (U \Sigma V^*) (U \Sigma V^*)^* \\
+    &= U \Sigma V^* V \Sigma^* U^* \\
+    &= U \Sigma \Sigma^* U^* \\
+    &= U \Sigma^2 U^*
+\end{align*}
+
+Since $\Sigma^2$ is a square diagonal matrix with nonzero diagonal entries, from the pervious \textbf{Question 1}, we know both $A^* A$ and $AA^*$ are invertible.
+
+
+\end{document}
+
