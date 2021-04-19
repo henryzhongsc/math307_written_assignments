@@ -1,0 +1,155 @@
+\documentclass[11pt]{article}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilc}{\texttt}
+\usepackage{etoolbox}
+\usepackage{algorithm}
+\usepackage{changepage}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usepackage{pifont}
+\usepackage{gensymb}
+\usetikzlibrary{matrix,positioning,arrows.meta,arrows}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+% \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\providecommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\providecommand{\myfloor}[1]{\left \lfloor #1 \right \rfloor }
+\providecommand{\qbm}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\providecommand{\qpm}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\providecommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\providecommand{\len}[1]{\left| #1 \right|}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\begin{document}
+
+
+
+\title{\textbf{MATH 307: Individual Homework 19}}
+
+
+\author{Shaochen (Henry) ZHONG, \ilc{sxz517@case.edu}}
+
+\date{Due and submitted on 04/19/2021 \\ Spring 2021, Dr. Guo}
+\maketitle
+
+
+
+\subsection*{Problem 1}
+\textit{See HW instruction.}\newline
+
+We start from the identity matrix and follow the operations on the instruction:
+
+\begin{align*}
+    E &= \qbm{1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 2 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\}
+    \qbm{0 & 0 & 0 & 1 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        1 & 0 & 0 & 0 \\}
+    \qbm{1 & 0 & 0 & 0 \\
+        0 & -3 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\} \\
+    &= \qbm{1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 2 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\}
+        \qbm{0 & 0 & 0 & 1 \\
+            0 & -3 & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            1 & 0 & 0 & 0 \\} \\
+    &= \qbm{0 & 0 & 0 & 1 \\
+        0 & -3 & 0 & 0 \\
+        0 & -6 & 1 & 0 \\
+        1 & 0 & 0 & 0 \\}
+\end{align*}
+
+Now for $E^{-1}$, we have:
+
+\begin{align*}
+    E^{-1} &= \qbm{1 & 0 & 0 & 0 \\
+        0 & -\frac{1}{3} & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\}
+        \qbm{0 & 0 & 0 & 1 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        1 & 0 & 0 & 0 \\}
+        \qbm{1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & -2 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\} \\
+        &= \qbm{1 & 0 & 0 & 0 \\
+            0 & -\frac{1}{3} & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1 \\}
+            \qbm{0 & 0 & 0 & 1 \\
+        0 & 1 & 0 & 0 \\
+        0 & -2 & 1 & 0 \\
+        1 & 0 & 0 & 0 \\} \\
+        &= \qbm{0 & 0 & 0 & 1 \\
+        0 & -\frac{1}{3} & 0 & 0 \\
+        0 & -2 & 1 & 0 \\
+        1 & 0 & 0 & 0 \\}
+\end{align*}
+
+To verify we have:
+
+\begin{equation*}
+    E E^{-1} = \qbm{0 & 0 & 0 & 1 \\
+        0 & -3 & 0 & 0 \\
+        0 & -6 & 1 & 0 \\
+        1 & 0 & 0 & 0 \\}
+        \qbm{0 & 0 & 0 & 1 \\
+    0 & -\frac{1}{3} & 0 & 0 \\
+    0 & -2 & 1 & 0 \\
+    1 & 0 & 0 & 0 \\} = I
+\end{equation*}
+
+\subsection*{Problem 2}
+\textit{See HW instruction.}\newline
+
+For a matrix to be in \textit{rref} it must have the following properties:
+
+\begin{enumerate}
+    \item The first non-zero entry in any row is the number 1, these are called pivots. (So each row can have zero or one pivot.)
+    \item A pivot is the only non-zero entry in its column. (So each column can have zero or one pivot.)
+    \item Rows are orders so that rows of all zeros are at the bottom, and the pivots are in column order.
+\end{enumerate}
+
+Now to evaluate the given matrices with respect to the above rules:
+
+\begin{itemize}
+    \item \textbf{A}: Failed rule 1.
+    \item \textbf{B}: Failed rule 3 (pivots not in column order).
+    \item \textbf{C}: Failed rule 2.
+    \item \textbf{D}: It is in rref form.
+\end{itemize}
+
+
+\end{document}
+
