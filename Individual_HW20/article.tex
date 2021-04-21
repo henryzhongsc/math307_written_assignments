@@ -1,0 +1,79 @@
+\documentclass[11pt]{article}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilc}{\texttt}
+\usepackage{etoolbox}
+\usepackage{algorithm}
+\usepackage{changepage}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usepackage{pifont}
+\usepackage{gensymb}
+\usetikzlibrary{matrix,positioning,arrows.meta,arrows}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+% \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\providecommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\providecommand{\myfloor}[1]{\left \lfloor #1 \right \rfloor }
+\providecommand{\qbm}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\providecommand{\qpm}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\providecommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\providecommand{\len}[1]{\left| #1 \right|}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\begin{document}
+
+
+
+\title{\textbf{MATH 307: Individual Homework 20}}
+
+
+\author{Shaochen (Henry) ZHONG, \ilc{sxz517@case.edu}}
+
+\date{Due and submitted on 04/21/2021 \\ Spring 2021, Dr. Guo}
+\maketitle
+
+
+
+\subsection*{Problem 1}
+\textit{See HW instruction.}\newline
+
+We will first find $U$ with row reduction.
+
+\begin{equation*}
+    U = \underbrace{\qbm{3 & 2 & 1 \\ 6 & 6 & 3 \\ 3 & 0 & -1 \\}}_{R2 - \mathbf{(2)}R1} \Rightarrow \underbrace{\qbm{3 & 2 & 1 \\ 0 & 2 & 1 \\ 3 & 0 & -1 \\}}_{R3 - \mathbf{(1)}R1} \Rightarrow \underbrace{\qbm{3 & 2 & 1 \\ 0 & 2 & 1 \\ 0 & -2 & -2 \\}}_{R3 - \mathbf{(-1)}R2} \Rightarrow \qbm{3 & 2 & 1 \\ 0 & 2 & 1 \\ 0 & 0 & -1 \\}
+\end{equation*}
+
+Then we start $L$ from $I$ and add the above operations (highlighted in bold), we have $L = \qbm{1 & 0 & 0 \\ 2 & 1 & 0 \\ 1 & -1 & 1}$.
+
+To verify, we have:
+
+\begin{equation*}
+    LU = \qbm{1 & 0 & 0 \\ 2 & 1 & 0 \\ 1 & -1 & 1} \qbm{3 & 2 & 1 \\ 0 & 2 & 1 \\ 0 & 0 & -1 \\} = \qbm{3 & 2 & 1 \\ 6 & 6 & 3 \\ 3 & 0 & -1 \\} = A
+\end{equation*}
+
+
+
+\end{document}
+
