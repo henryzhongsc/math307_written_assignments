@@ -64,7 +64,7 @@
 For $A$ to be not invertible we must have $\det(A) = 0$, which implies:
 
 \begin{equation*}
-    \det(A) = \det(U \Sigma V^T) = \det(u) \det(\Sigma) = \det(V^T) = 0 \\
+    \det(A) = \det(U \Sigma V^T) = \det(u) \det(\Sigma)  \det(V^T) = 0 \\
 \end{equation*}
 
 Since $U, V$ are orthognal matrices, we must have $\pm 1$ to be their determinants\footnote{because $\det(Q Q^T) = \det(I) \Longrightarrow \det(Q) \det(Q^{-1}) = 1 \Longrightarrow \det(Q)^2  =  1 \Longrightarrow \det(Q) = \pm 1$, assume $Q$ is a orthognal matrix.}. So we must have $\det(\Sigma) = 0$ for $A$ to be not invertible.
@@ -90,8 +90,30 @@ The reverse is rather simple. Again by contrapositive, if $\Sigma$ has zero sing
 \subsection*{Problem 3}
 \textit{See HW instruction.}\newline
 
+\noindent\textbf{W.T.S.}  $A$ is invertible $\Longrightarrow \det(A) \neq 0$.
+
+% Similar to the footnote, we have:
+% \begin{align*}
+%     \det(A A^{-1}) &= \det(A) \det(A^{-1})= \det(I) \\
+%     \Longrightarrow \det(A) \neq 0
+% \end{align*}
+
+\begin{align*}
+    Av &= \lambda v \\
+    A^{-1} Av &=  \lambda A^{-1} v \\
+    v &= \lambda A^{-1} v \\
+    \Longrightarrow A^{-1} v &= \frac{1}{\lambda} v
+\end{align*}
+
+As $A$ is invertible, it must has nonzero eigenvalues as otherwise we can't have $\frac{1}{\lambda}$. And per \textbf{Problem 2}, we know that $\det(A)$ is the product of A's eigenvalues, so $\det(A) \neq 0$.\newline
+
+\noindent\textbf{W.T.S.}  $\det(A) \neq 0 \Longrightarrow A$ is invertible.
+
+From \textbf{Problem 1}, assume $A = U \Sigma V^T $ to be not invertible, we know that $A$ must have zero value in its $\Sigma$. Since $\Sigma$ is a diagonal matrix, we have $\det(\Sigma)$ to be the product of its diagonal valus, so $\Sigma = 0$
+
+Also known that $U, V^T$ are orthognal matrices and their determinants must therefore be $\pm 1$. So $\det(A) = \det(U \Sigma V^T) = \det(u) \det(\Sigma)  \det(V^T) = (\pm 1) 0 (\pm 1) = 0$. We have proven the statement-in-question by contrapositive.\newline
 
 
-
+\noindent As both directions are showed, the proposed iff statmenet is therefore proven.
 \end{document}
 
