@@ -1,0 +1,97 @@
+\documentclass[11pt]{article}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilc}{\texttt}
+\usepackage{etoolbox}
+\usepackage{algorithm}
+\usepackage{changepage}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usepackage{pifont}
+\usepackage{gensymb}
+\usetikzlibrary{matrix,positioning,arrows.meta,arrows}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+% \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\providecommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\providecommand{\myfloor}[1]{\left \lfloor #1 \right \rfloor }
+\providecommand{\qbm}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\providecommand{\qpm}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\providecommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\providecommand{\len}[1]{\left| #1 \right|}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\begin{document}
+
+
+
+\title{\textbf{MATH 307: Individual Homework 22}}
+
+
+\author{Shaochen (Henry) ZHONG, \ilc{sxz517@case.edu}}
+
+\date{Due on 05/03/2021 with extension granted till 05/06/2021, submitted on 05/03/2021 \\ Spring 2021, Dr. Guo}
+\maketitle
+
+
+
+\subsection*{Problem 1}
+\textit{See HW instruction.}\newline
+
+\noindent\textbf{W.T.S.}  $\sigma_i \in \Sigma$ are nonzero $\Longrightarrow$ $A$ is invertible.
+
+For $A$ to be not invertible we must have $\det(A) = 0$, which implies:
+
+\begin{equation*}
+    \det(A) = \det(U \Sigma V^T) = \det(u) \det(\Sigma) = \det(V^T) = 0 \\
+\end{equation*}
+
+Since $U, V$ are orthognal matrices, we must have $\pm 1$ to be their determinants\footnote{because $\det(Q Q^T) = \det(I) \Longrightarrow \det(Q) \det(Q^{-1}) = 1 \Longrightarrow \det(Q)^2  =  1 \Longrightarrow \det(Q) = \pm 1$, assume $Q$ is a orthognal matrix.}. So we must have $\det(\Sigma) = 0$ for $A$ to be not invertible.
+
+Also since $\Sigma$ is a diagonal matrix, we have $\det(\Sigma)$ to be the product of its diagonal valus. So for $\det(\Sigma) = 0$ we must have at least on of its singular value to be zero. So by contrapositive, we have showed that for $A$ to be invertible, there must be  $\sigma_i \in \Sigma$ are nonzero.\newline
+
+\noindent\textbf{W.T.S.} $A$ is invertible $\Longrightarrow$ $\sigma_i \in \Sigma$ are nonzero.
+
+The reverse is rather simple. Again by contrapositive, if $\Sigma$ has zero singular values, we have $\det(\Sigma) = 0$ and therefore $\det(A) = 0$, thus $A$ is not invertible by the determinant definition.\newline
+
+\noindent As both directions are showed, the proposed iff statmenet is therefore proven.
+
+\subsection*{Problem 2}
+\textit{See HW instruction.}\newline
+
+\begin{align*}
+    \det(A - \lambda I) &= p(\lambda) = (\lambda_1 - \lambda)(\lambda_2 - \lambda)(\lambda_3 - \lambda) \dots (\lambda_4 - \lambda) \\
+    &\text{Set} \ \lambda = 0 \\
+    \det(A) &= \lambda_1 \lambda_2 \lambda_3 \dots \lambda_n
+\end{align*}
+
+
+\subsection*{Problem 3}
+\textit{See HW instruction.}\newline
+
+
+
+
+\end{document}
+
