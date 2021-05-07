@@ -1,0 +1,113 @@
+\documentclass[11pt]{article}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilc}{\texttt}
+\usepackage{etoolbox}
+\usepackage{algorithm}
+\usepackage{changepage}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usepackage{gensymb}
+\usetikzlibrary{matrix,positioning,arrows.meta,arrows}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+% \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\providecommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\providecommand{\myfloor}[1]{\left \lfloor #1 \right \rfloor }
+\providecommand{\qbm}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\providecommand{\qpm}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\providecommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\providecommand{\len}[1]{\left| #1 \right|}
+
+\begin{document}
+
+
+
+
+\title{\textbf{MATH 307: Group Homework 12}}
+
+
+\author{\textit{Group 8}\\
+Shaochen (Henry) ZHONG, Zhitao (Robert) CHEN, John MAYS, Huaijin XIN\\ \ilc{\{sxz517, zxc325, jkm100, hxx200\}@case.edu}}
+
+\date{Due and submitted on 05/07/2021 \\ Spring 2021, Dr. Guo}
+\maketitle
+
+
+
+\subsection*{Problem 1}
+\textit{Textbook page 132, problem 1.}\newline
+
+So we will try to identify the $\norm{b - Ax}_2^2$ among the three candidates.
+
+\begin{align*}
+    \norm{b - A \qbm{5 \\ -1 \\4}}_2^2 &= \norm{b - \qbm{1 & -1 & 1 \\ 1 & 0 & 0 \\ 1 & 1 & 1 \\ 1 & 2 & 2} \qbm{5 \\ -1 \\4}}_2^2 = \norm{\qbm{8 \\ 8 \\ 4 \\ 16} - \qbm{10 \\ 5 \\ 8 \\ 11}}_2^2= \norm{\qbm{-2 \\ 3 \\ -4 \\5}}_2^2 = 54 \\
+    \norm{b - A \qbm{8 \\ 1 \\-2}}_2^2 &= \norm{\qbm{8 \\ 8 \\ 4 \\ 16} - \qbm{5 \\ 8 \\ 7 \\ 6}} = \norm{\qbm{3 \\ 0 \\ -3 \\ 10}} = 118 \\
+    \norm{b - A \qbm{0 \\ -1 \\ 0}}_2^2 &= \norm{\qbm{8 \\ 8 \\ 4 \\ 16} - \qbm{1 \\ 0 \\ -1 \\ -2}}_2^2 = \norm{\qbm{7 \\ 8 \\ 5 \\ 18}}_2^2 = 462
+\end{align*}
+
+Thus, $\qbm{5 \\ -1 \\ 4}$ is the least squares solution.
+
+
+\subsection*{Problem 2}
+\textit{Textbook page 132, problem 2.}\newline
+
+\section*{Problem 2}
+$$A = \begin{bmatrix}1&1\\1&0\\1&1\end{bmatrix}, \ b = \begin{bmatrix}3\\3\\3\end{bmatrix}$$
+$A^{T}$ would obviously be:
+$$\begin{bmatrix}1&1&1\\1&0&1\end{bmatrix}$$
+
+Calculating $P:$
+\begin{equation*}
+    \begin{split}
+        P &= A(A^{T}A)^{-1}A^{T}= A(\begin{bmatrix}1&1&1\\1&0&1\end{bmatrix} \begin{bmatrix}1&1\\1&0\\1&1\end{bmatrix})^{-1}A^{T}\\
+        &= A (\begin{bmatrix}3&2\\2&2\end{bmatrix})^{-1}A^{T} = A (\frac{1}{2}\begin{bmatrix}2&-2\\-2&3\end{bmatrix}) A^{T} = \begin{bmatrix}1&1\\1&0\\1&1\end{bmatrix}\begin{bmatrix}1&-1\\-1&1.5\end{bmatrix} \begin{bmatrix}1&1&1\\1&0&1\end{bmatrix}\\
+        &= \begin{bmatrix}0&0.5\\1&-1\\0&0.5\end{bmatrix}\begin{bmatrix}1&1&1\\1&0&1\end{bmatrix} = P = \begin{bmatrix}0.5&0&0.5\\0&1&0\\0.5&0&0.5\end{bmatrix}
+    \end{split}
+\end{equation*}
+Calculating $Pb$:
+$$Pb = \begin{bmatrix}0.5&0&0.5\\0&1&0\\0.5&0&0.5\end{bmatrix} = \begin{bmatrix}3\\3\\3\end{bmatrix} = \begin{bmatrix}3\\3\\3\end{bmatrix} $$
+
+
+\subsection*{Problem 3}
+\textit{Textbook page 132, problem 3.}\newline
+
+% https://adrianstoll.com/linear-algebra/least-squares.html
+
+\begin{align*}
+    Ax &= A(A^* A^{-1})A^* b = Pb \\
+    P &= A(A^* A^{-1})A^* = A(A^* A)^{-1} A^* \\
+    &= \qbm{1 \\ 2\\ 3} (\qbm{1 & 2 & 3}\qbm{1 \\ 2\\ 3})^{-1} \qbm{1 & 2 & 3} \\
+    &= \qbm{1 \\ 2\\ 3} \frac{1}{14} \qbm{1 & 2 & 3} = \qbm{\frac{1}{14} & \frac{1}{7} & \frac{3}{14} \\
+        \frac{1}{7} & \frac{2}{7} & \frac{2}{7} \\
+        \frac{3}{14} &\frac{3}{7} &\frac{9}{14}} \\
+    \Rightarrow Pb &= \qbm{\frac{1}{14} & \frac{1}{7} & \frac{3}{14} \\
+        \frac{1}{7} & \frac{2}{7} & \frac{2}{7} \\
+        \frac{3}{14} &\frac{3}{7} &\frac{9}{14}} \qbm{2 \\ 3 \\ 7} = \qbm{\frac{29}{14} \\ \frac{29}{7} \\ \frac{87}{14}} = Ax = \qbm{1 \\ 2\\ 3} x\\
+    \Longrightarrow x &=  \frac{29}{14}
+\end{align*}
+
+Thus, the least squares solution for this system is $\frac{29}{14}$.
+
+\end{document}
+
