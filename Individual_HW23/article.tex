@@ -1,0 +1,109 @@
+\documentclass[11pt]{article}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilc}{\texttt}
+\usepackage{etoolbox}
+\usepackage{algorithm}
+\usepackage{changepage}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usepackage{pifont}
+\usepackage{gensymb}
+\usetikzlibrary{matrix,positioning,arrows.meta,arrows}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+% \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\providecommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\providecommand{\myfloor}[1]{\left \lfloor #1 \right \rfloor }
+\providecommand{\qbm}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\providecommand{\qpm}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\providecommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\providecommand{\len}[1]{\left| #1 \right|}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\begin{document}
+
+
+
+\title{\textbf{MATH 307: Individual Homework 23}}
+
+
+\author{Shaochen (Henry) ZHONG, \ilc{sxz517@case.edu}}
+
+\date{Due on 05/05/2021 and submitted on 05/08/2021 (72 hours extension granted) \\ Spring 2021, Dr. Guo}
+\maketitle
+
+
+
+\subsection*{Problem 1}
+\textit{See HW instruction.}\newline
+
+First we need to find $\det(A) = (-2) * (2) - 1(-1) = -3$, then we apply the Cramer's rule:
+
+\begin{align*}
+    x_1 &= \frac{\det(\qbm{3 & 1 \\ 3 & 2})}{\det(A)} = \frac{6 - 3}{-3} = -1 \\
+    x_2 &= \frac{\det(\qbm{-2 & 3 \\ -1 & 3})}{\det(A)} = \frac{-6 - (-3)}{-3} = 1
+\end{align*}
+
+So we have $x = \qbm{-1 \\ 1}$; and we may verify that $Ax = \qbm{2 + 1 \\ 1 + 2} = b$.
+
+\subsection*{Problem 2}
+\textit{See HW instruction.}\newline
+
+\noindent\textbf{(a) W.T.S.} $Ax = 0$ has nontrivial solutions $\Longrightarrow 0$ is an eigenvalue of $A$.
+
+Assume $Ax = 0 = \lambda x$ with $x \neq 0$, we must have $\lambda = 0$.\newline
+
+\noindent\textbf{(b) W.T.S.} $0$ is an eigenvalue of $A \Longrightarrow \det(A) = 0$.
+
+In \textbf{Individual Homework 22, Problem 2} we have already established that determinant of $A$ is equals to the product of its eigenvalues. Given that $0$ is an eigenvalue of $A$, we must have $\det(A) = 0 \cdot \lambda_1 \dots \lambda_n = 0$.\newline
+
+\noindent\textbf{(c) W.T.S.} $\det(A) = 0 \Longrightarrow Ax = 0$ has nontrivial solutions.
+
+Known that $\det(A)$ is the product of diagonal entries of $rref(A)$, for $\det(A) = 0$ we know that $A$ does not have full rank. So there must be $null(A) \neq 0$ according to the rank-nullity theorem, which implies $Ax = 0$ has a nontrivial solution.\newline
+
+% $\det(A)$ implies the rows of $A$ are linearly dependent. Which means for $r_i$ representing the $i$-th row in $A$, we must have $c_1 r_1 + c_2 r_2 + \dots + c_n r_n = 0$ with not all scalar $c_i$ to be zero.
+
+Since we have showed $(a) \Rightarrow (c) \Rightarrow (b) \Rightarrow (a)$, we may say that (a), (b), and (c) are all equivalent.
+
+
+\subsection*{Problem 3}
+\textit{See HW instruction.}\newline
+
+In \textbf{Individual Homework 17, Problem 2} we have established that for $A^* A$ is invertible for $A$ with positive singular values. As I didn't solve that problem perfectly, I'd like to go through it again here:
+
+\begin{align*}
+    A &= (U \Sigma V^*) \\
+    A^* A &= (U \Sigma V^*)^* (U \Sigma V^*) \\
+    &= V \Sigma^* U^* U \Sigma V^* \\
+    &= V \Sigma^* \Sigma V^* \\
+\end{align*}
+
+Known that $V$ and $V^*$ are both invertible for being orthogonal, we only interested in if $\Sigma^* \Sigma$ is invertible. Also known that $A$ is invertible, so the diagonal entries of $\Sigma$ are nonzero, which implies $\Sigma^* \Sigma$ is simply a square matrix with diagonal entries being the squares of diagonal entries of $\Sigma$ and therefore also invertible. Thus, $A^* A$ is invertible.\newline
+
+Then we may simply have $A^* Ax = A^* b \Longrightarrow x = (A^* A)^{-1} A^* b$. As $x$ only depends on $A$ and $b$, the solution will be unique.\newline
+
+
+\end{document}
+
